@@ -221,10 +221,6 @@
   /* ══ END ══ */
   #endScreen{background:linear-gradient(135deg,#667eea,#764ba2);gap:14px;padding:20px;}
   .end-title{font-family:'Fredoka One',cursive;font-size:clamp(1.9rem,8vw,3rem);color:white;text-shadow:3px 3px 0 rgba(0,0,0,.3);animation:bounceIn .5s ease;}
-  .end-stars{font-size:clamp(1.8rem,9vw,2.8rem);letter-spacing:6px;animation:popIn .5s ease .3s both;}
-  .end-score{background:white;border-radius:20px;padding:14px 38px;text-align:center;animation:bounceIn .5s ease .4s both;}
-  .end-score .num{font-family:'Fredoka One',cursive;font-size:2.6rem;color:#4CAF50;}
-  .end-score .lbl{font-size:.9rem;color:#888;}
   .end-btns{display:flex;gap:12px;}
   .btn-home,.btn-again{
     font-family:'Fredoka One',cursive;font-size:1.1rem;padding:13px 24px;
@@ -405,11 +401,7 @@
 <!-- ══ END ══ -->
 <div class="screen" id="endScreen">
   <div class="end-title">🎉 כל הכבוד!</div>
-  <div class="end-stars" id="endStars">⭐⭐⭐</div>
-  <div class="end-score">
-    <div class="num" id="endScore">5/5</div>
-    <div class="lbl">תשובות נכונות</div>
-  </div>
+
   <div class="end-btns">
     <button class="btn-home"  onclick="goHome()">🏠 יעד חדש</button>
     <button class="btn-again" onclick="replayGame()">🔄 שוב!</button>
@@ -725,8 +717,6 @@ function endRound(){
     mistakes:round.filter((_,i)=>!results[i]).map(c=>`${c.e} ${c.n}`)};
   stats.push(sess);
   try{localStorage.setItem('rStats',JSON.stringify(stats));}catch(e){}
-  $('endScore').textContent=`${correct}/5`;
-  $('endStars').textContent=correct===5?'⭐⭐⭐':correct>=3?'⭐⭐':'⭐';
   showTravel(correct);
 }
 
